@@ -1,0 +1,63 @@
+$:
+  vscode:
+    - docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        volumes:
+          - /root/.bun/install/cache
+          - /root/.npm
+      imports:
+        - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
+      services:
+        - vscode
+        - docker
+      stages:
+        - name: 配置wakatime
+          imports:
+            - https://cnb.cool/arsrna/env/-/blob/main/vscode.yml
+          script:
+            - echo "[settings]\n" > /root/.wakatime.cfg
+            - echo "api_key = ${WAKA_APIKEY}"  >> /root/.wakatime.cfg
+        - name: install
+          script:
+            - bun i
+            - bun i -g tsx typescript http-server
+
+  push:
+    - docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        volumes:
+          - /root/.bun/install/cache
+          - /root/.npm
+      stages:
+        - name: 安装依赖
+          script: bun i
+        - name: 单测
+          script: bun run test
+        - name: coverage
+          type: testing:coverage
+          options:
+            diffLines: 60 # 增量覆盖率红线
+          exports:
+            lines: LINES
+            diff_pct: DIFF_LINES
+        - name: result
+          script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
+
+  tag_push:
+    - docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        volumes:
+          - /root/.bun/install/cache
+          - /root/.npm
+      stages:
+        - name: 构建部署
+          script:
+            - pnpm i
+            - npm run build
+            - echo $CNB_BRANCH
+        - name: update version
+          # 修改 package.json 中的version为当前tag，但不会提交代码
+          script: npm version $CNB_BRANCH --no-git-tag-version
+        - name: npm publish
+          script:
+            - npm publish

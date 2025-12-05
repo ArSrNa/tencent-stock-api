@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "esnext", // 指定ECMAScript目标版本
+        "lib": [
+            "ES6",
+            "ESNext",
+            "DOM"
+        ],
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "declaration": true,
+        "outDir": "./dist",
+        "strict": false,
+        "allowJs": true,
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "./dist",
+        "example"
+    ]
+}
