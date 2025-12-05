@@ -31,7 +31,7 @@ GetStockInfo(['sh000001', 'sz399001', "hkHSI"]).then(console.log);
 ## 获取股票数据
 ```js
 import { getStockInfo } from 'tencent-stock-api';
-GetStockInfo('sh000001').then(console.log);
+GetStockInfo(['sh000001']).then(console.log);
 ```
 
 返回结果（可参考`type.ts`）
