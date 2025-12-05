@@ -4,10 +4,12 @@
         "lib": [
             "ES6",
             "ESNext",
-            "DOM"
+            "DOM",
         ],
         "module": "esnext",
         "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
         "declaration": true,
         "outDir": "./dist",
         "strict": false,
@@ -19,6 +21,5 @@
     "exclude": [
         "node_modules",
         "./dist",
-        "example"
     ]
 }

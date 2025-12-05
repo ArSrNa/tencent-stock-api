@@ -1,0 +1,19 @@
+{
+  "name": "tencent-stock-api",
+  "version": "1.0.0",
+  "description": "腾讯财经api。仅作为实验和学习研究用途，不提供投资建议。市场有风险，投资需谨慎！",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "bun --watch example/index.ts",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://cnb.cool/arsrna/os/tencent-stock-api.git"
+  },
+  "keywords": [
+    "stock"
+  ],
+  "author": "Ar-Sr-Na",
+  "license": "MIT"
+}
