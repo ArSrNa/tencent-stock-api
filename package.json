@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "bun --watch example/index.node.ts",
     "build": "bun run build.ts",
-    "test": "jest --coverage"
+    "test": "bun test"
   },
   "repository": {
     "type": "git",

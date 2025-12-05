@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import GetInfo, { GetStockInfo, parseStockData } from "../src/index";
+import { StockData } from "../src/type";
 
 
 describe('批量获取股票数据', async () => {
@@ -31,24 +32,23 @@ describe('股票数据转换', async () => {
     });
 
     describe("摩尔线程sh688795个股信息", async () => {
-        const res = await GetStockInfo(['sh688795'])
-        const data = parseStockData(res);
-        test('买盘五档行情', () => expect(data.buyOrders).toBeArray())
-        test('卖盘五档行情', () => expect(data.sellOrders).toBeArray())
-        test('当前价格', () => expect(data.currentPrice).toBeNumber())
-        test('开盘价', () => expect(data.openPrice).toBeNumber())
-        test('昨日收盘价', () => expect(data.preClose).toBeNumber())
-        test('涨跌', () => expect(data.priceChange).toBeNumber())
-        test('涨跌%', () => expect(data.priceChangePercent).toBeNumber())
+        const [data] = await GetInfo(['sh688795'])
+        assertsTests(data);
+
     });
 
     describe('腾讯控股hk00700个股信息', async () => {
-        const res = await GetStockInfo(['hk00700'])
-        const data = parseStockData(res);
-        test('买盘五档行情', () => expect(data.buyOrders).toHaveLength(5))
-        test('卖盘五档行情', () => expect(data.sellOrders).toHaveLength(5))
-        test('当前价格', () => expect(data.currentPrice).toBeNumber())
-        test('开盘价', () => expect(data.openPrice).toBeNumber())
-        test('昨日收盘价', () => expect(data.preClose).toBeNumber())
+        const [data] = await GetInfo(['hk00700'])
+        assertsTests(data);
     })
 })
+
+const assertsTests = (data: StockData) => {
+    test('买盘五档行情', () => expect(data.buyOrders).toBeArray())
+    test('卖盘五档行情', () => expect(data.sellOrders).toBeArray())
+    test('当前价格', () => expect(data.currentPrice).toBeNumber())
+    test('开盘价', () => expect(data.openPrice).toBeNumber())
+    test('昨日收盘价', () => expect(data.preClose).toBeNumber())
+    test('涨跌', () => expect(data.priceChange).toBeNumber())
+    test('涨跌%', () => expect(data.priceChangePercent).toBeNumber())
+}
