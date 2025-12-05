@@ -29,6 +29,8 @@ $:
           - /root/.bun/install/cache
           - /root/.npm
       stages:
+        - name: 安装bun
+          script: npm i -g bun
         - name: 安装依赖
           script: bun i
         - name: 单测
@@ -52,8 +54,8 @@ $:
       stages:
         - name: 构建部署
           script:
-            - pnpm i
-            - npm run build
+            - npm i -g bun
+            - bun run build
             - echo $CNB_BRANCH
         - name: update version
           # 修改 package.json 中的version为当前tag，但不会提交代码
