@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import GetInfo, { GetStockInfo, parseStockData } from "../dist/index";
+import GetInfo, { GetStockInfo, parseStockData } from "../src/index";
 
 
 describe('批量获取股票数据', async () => {
