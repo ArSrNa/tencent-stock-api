@@ -4,7 +4,7 @@
   "description": "腾讯财经api。仅作为实验和学习研究用途，不提供投资建议。市场有风险，投资需谨慎！",
   "main": "./dist/index.js",
   "scripts": {
-    "dev": "bun --watch example/index.ts",
+    "dev": "bun --watch example/index.node.ts",
     "build": "bun run build.ts",
     "test": "jest --coverage"
   },

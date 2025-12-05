@@ -17,6 +17,10 @@ export async function GetStockInfo(stocks: string[]) {
     return text;
 }
 
+/**
+ * @description 获取股票信息
+ * @returns 
+ */
 export async function GetInfo(stocks: string[]) {
     const text = await GetStockInfo(stocks);
     // const info = text.split('\n').filter(Boolean);
@@ -26,7 +30,7 @@ export async function GetInfo(stocks: string[]) {
     while ((temp = regex.exec(text)) !== null) {
         results.push(temp[1]); // 收集所有捕获的内容
     }
-    console.log(results.map(parseStockData))
+    return results.map(parseStockData)
 }
 
 
@@ -76,7 +80,7 @@ export function parseStockData(dataStr: string) {
         innerVolume: Number(arr[8] || 0),
         buyOrders: buyOrders,                // 9-18: 买1-买5
         sellOrders: sellOrders,              // 19-28: 卖1-卖5
-        lastTrade: arr[29],                  // 29: 最近逐笔成交
+        lastTrade: Number(arr[29]),                  // 29: 最近逐笔成交
         time: arr[30],                       // 30: 时间
         priceChange: Number(arr[31] || 0), // 31: 涨跌
         priceChangePercent: Number(arr[32] || 0), // 32: 涨跌%

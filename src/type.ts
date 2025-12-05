@@ -45,7 +45,7 @@ export interface StockData {
     /** 卖1-卖5 */
     sellOrders: Order[];
     /** 最近逐笔成交 */
-    lastTrade: string;
+    lastTrade: number;
     /** 时间 */
     time: string;
     /** 涨跌 */

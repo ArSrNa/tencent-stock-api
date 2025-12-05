@@ -32,11 +32,11 @@ $:
         - name: 安装依赖
           script: bun i
         - name: 单测
-          script: bun run test
+          script: bun test --coverage
         - name: coverage
           type: testing:coverage
           options:
-            diffLines: 60 # 增量覆盖率红线
+            diffLines: 78 # 增量覆盖率红线
           exports:
             lines: LINES
             diff_pct: DIFF_LINES
