@@ -1,5 +1,5 @@
-import { GetStockInfo, GetInfo } from './stock'
+import { GetStockInfo, GetInfo, parseStockData } from './stock'
 
-export { GetStockInfo }
+export { GetStockInfo, parseStockData }
 
 export default GetInfo

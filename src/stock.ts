@@ -1,4 +1,4 @@
-import { StockData } from "./type";
+import { type StockData } from "./type";
 
 const APIEP = 'https://qt.gtimg.cn'
 
@@ -35,7 +35,7 @@ export async function GetInfo(stocks: string[]) {
  * @param dataStr - 以~分隔的股票数据字符串
  * @returns 结构化的股票数据对象
  */
-function parseStockData(dataStr: string) {
+export function parseStockData(dataStr: string) {
     const arr = dataStr.split('~');
     const [_, name, code] = arr
     /**买卖盘数据（买1-买5） */
