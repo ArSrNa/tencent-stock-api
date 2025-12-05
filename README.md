@@ -2,6 +2,10 @@
 
 声明：**仅作为实验和学习研究用途，不提供投资建议。市场有风险，投资需谨慎！数据并非实时数据，数据来源于腾讯财经，请勿用于任何商业用途！**
 
+![badge](https://cnb.cool/arsrna/os/tencent-stock-api/-/badge/git/latest/ci/status/push)
+
+![badge](https://cnb.cool/arsrna/os/tencent-stock-api/-/badge/git/latest/testing/unit/coverage)
+
 # 安装
 
 ```
@@ -22,7 +26,7 @@ bun add tencent-stock-api
 
 ## 批量获取股票数据
 ```js
-import { getStockInfo } from 'tencent-stock-api';
+import { GetStockInfo } from 'tencent-stock-api';
 GetStockInfo(['sh000001', 'sz399001', "hkHSI"]).then(console.log);
 
 // v_sh000001="1~上证指数~000001~3902.81~3875.79~3873.12~500368768~0~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~0.00~0~~20251205155912~27.02~0.70~3907.78~3863.31~3902.81/500368768/716742448877~500368768~71674245~1.05~16.66~~3907.78~3863.31~1.15~593830.02~633910.23~0.00~-1~-1~1.05~0~3882.07~~~~~~71674244.8877~0.0000~0~ ~ZS~16.44~0.37~~~~4034.08~3040.69~1.77~-2.37~3.64~4753941296203~~-5.40~16.20~4753941296203~~~15.85~0.00~~CNY~0~~0.00~0"; v_sz309001="........; v_hkHSI="........";
@@ -30,8 +34,8 @@ GetStockInfo(['sh000001', 'sz399001', "hkHSI"]).then(console.log);
 
 ## 获取股票数据
 ```js
-import { getStockInfo } from 'tencent-stock-api';
-GetStockInfo(['sh000001']).then(console.log);
+import { GetInfo } from 'tencent-stock-api';
+GetInfo(['sh000001','sz399001','sh688795','hk00700']).then(console.log);
 ```
 
 返回结果（可参考`type.ts`）
