@@ -23,7 +23,8 @@ $:
             - bun i -g tsx typescript http-server
 
   push:
-    - docker:
+    test:
+      docker:
         image: docker.cnb.cool/arsrna/dev-env/node22:latest
         volumes:
           - /root/.bun/install/cache
@@ -44,6 +45,18 @@ $:
             diff_pct: DIFF_LINES
         - name: result
           script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
+    sync:
+      stages:
+        - name: sync to github
+          image: tencentcom/git-sync
+          imports:
+            - https://cnb.cool/arsrna/env/-/blob/main/git.yaml
+          settings:
+            target_url: https://github.com/ArSrNa/tencent-stock-api.git
+            auth_type: https
+            username: ${GIT_USERNAME}
+            password: ${GIT_ACCESS_TOKEN}
+            git_email: "root@arsrna.cn"
 
   tag_push:
     - docker:
