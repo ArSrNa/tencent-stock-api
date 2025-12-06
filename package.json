@@ -1,10 +1,10 @@
 {
   "name": "tencent-stock-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "腾讯财经api。仅作为实验和学习研究用途，不提供投资建议。市场有风险，投资需谨慎！",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "homepage": "https://cnb.cool/arsrna/os/tencent-stock-api",
+  "homepage": "https://os.arsrna.cn/demo/tencent-stock-api?stockcode=sh600839",
   "files": [
     "dist"
   ],
