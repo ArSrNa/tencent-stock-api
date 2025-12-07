@@ -19,8 +19,8 @@ $:
             - echo "api_key = ${WAKA_APIKEY}"  >> /root/.wakatime.cfg
         - name: install
           script:
+            - npm i -g bun
             - bun i
-            - bun i -g tsx typescript http-server
 
   push:
     test:
