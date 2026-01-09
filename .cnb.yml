@@ -45,6 +45,14 @@ $:
             diff_pct: DIFF_LINES
         - name: result
           script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
+        - name: 飞书
+          imports:
+            - https://cnb.cool/arsrna/env/-/blob/main/feishu.yml
+          image: docker.cnb.cool/arsrna/feishu-push
+          settings:
+            ROBOT_URL: $ROBOT_URL
+            TEMPLATE_ID: $TEMPLATE_ID
+            VERSION: $VERSION
     sync:
       stages:
         - name: sync to github
