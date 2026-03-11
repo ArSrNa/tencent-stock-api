@@ -70,6 +70,7 @@ $:
             username: ${GIT_USERNAME}
             password: ${GIT_ACCESS_TOKEN}
             git_email: "root@arsrna.cn"
+            force: true
 
   tag_push:
     - docker:
